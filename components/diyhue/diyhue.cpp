@@ -92,13 +92,13 @@ namespace esphome
         bool DiyHueComponent::process_(const uint8_t *payload, uint16_t size)
         {
 
-            // size under 10 means we don't even receive a valid header.
-            // size under 13 means we don't have enough for even 1 pixel.
-            if (size < 13)
-            {
-                ESP_LOGE(TAG, "Invalid DiyHue packet received, too short (size=%d)", size);
-                return false;
-            }
+            // // size under 10 means we don't even receive a valid header.
+            // // size under 13 means we don't have enough for even 1 pixel.
+            // if (size < 13)
+            // {
+            //     ESP_LOGE(TAG, "Invalid DiyHue packet received, too short (size=%d)", size);
+            //     return false;
+            // }
 
             // ignore packet if data offset != [00 00 00 00].  This likely means the device is receiving a DiyHue packet not meant for it.
             // There may be a better way to handle this header field.  One user was receiving packets with non-zero data offset that were

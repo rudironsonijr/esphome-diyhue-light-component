@@ -103,11 +103,11 @@ namespace esphome
             // ignore packet if data offset != [00 00 00 00].  This likely means the device is receiving a DiyHue packet not meant for it.
             // There may be a better way to handle this header field.  One user was receiving packets with non-zero data offset that were
             // screwing up the light effect (flickering).
-            if (payload[4] || payload[5] || payload[6] || payload[7])
-            {
-                ESP_LOGE(TAG, "Ignoring DiyHue Packet with non-zero data offset.");
-                return false;
-            }
+            // if (payload[4] || payload[5] || payload[6] || payload[7])
+            // {
+            //     ESP_LOGE(TAG, "Ignoring DiyHue Packet with non-zero data offset.");
+            //     return false;
+            // }
 
             ESP_LOGV(TAG, "DiyHue packet received (size=%d): - %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x [%02x %02x %02x]", size, payload[0], payload[1], payload[2], payload[3], payload[4], payload[5], payload[6], payload[7], payload[8], payload[9], payload[10], payload[11], payload[12]);
 

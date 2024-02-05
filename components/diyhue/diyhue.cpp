@@ -122,13 +122,16 @@ namespace esphome
             // run through all registered effects, each takes required data per their size starting at packet address determined by used.
             for (auto *light_effect : this->light_effects_)
             {
-                if (used >= size)
-                {
-                    return false;
-                }
+                // if (used >= size)
+                // {
+                //     return false;
+                // }
+
                 uint16_t new_used = light_effect->process_(payload, size, used);
+
                 if (new_used == 0)
                 {
+                    ESP_LOGD(TAG, "new_used == 0");
                     return false;
                 }
                 else

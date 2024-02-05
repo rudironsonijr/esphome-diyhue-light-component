@@ -101,6 +101,7 @@ namespace esphome
       float red = (float)payload[1] / 255.0f;
       float green = (float)payload[2] / 255.0f;
       float blue = (float)payload[3] / 255.0f;
+      ESP_LOGV(TAG, "Colors: r[%f], g[%f], b[%f]", red, green, blue);
 
       float brightness = (float)payload[4] / 255.0f;
 

@@ -126,7 +126,7 @@ namespace esphome
                 {
                     return false;
                 }
-                uint16_t new_used = light_effect->process_(&payload, size, used);
+                uint16_t new_used = light_effect->process_(*payload, size, used);
                 if (new_used == 0)
                 {
                     return false;

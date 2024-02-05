@@ -73,12 +73,12 @@ namespace esphome
     uint16_t DiyHueLightEffect::process_(const uint8_t *payload, uint16_t size, uint16_t used)
     {
 
-      // at least for now, we require 3 bytes of data (r, g, b).
-      // If there aren't 3 unused bytes, return 0 to indicate error.
-      if (size < (used + 3))
-      {
-        return 0;
-      }
+      // // at least for now, we require 3 bytes of data (r, g, b).
+      // // If there aren't 3 unused bytes, return 0 to indicate error.
+      // if (size < (used + 3))
+      // {
+      //   return 0;
+      // }
 
       // disable gamma on first received packet, not just based on effect being enabled.
       // that way home assistant light can still be used as normal when DiyHue packets are not
@@ -92,7 +92,7 @@ namespace esphome
       this->next_packet_will_be_first_ = false;
       this->last_diyhue_time_ms_ = millis();
 
-      ESP_LOGV(TAG, "Applying DiyHue data for '%s->%s': (%02x,%02x,%02x) size = %d, used = %d", this->state_->get_name().c_str(), this->get_name().c_str(), payload[used], payload[used + 1], payload[used + 2], size, used);
+      ESP_LOGD(TAG, "Applying DiyHue data for '%s->%s': (%02x,%02x,%02x) size = %d, used = %d", this->state_->get_name().c_str(), this->get_name().c_str(), payload[used], payload[used + 1], payload[used + 2], size, used);
 
       // float red = (float)payload[used] / 255.0f;
       // float green = (float)payload[used + 1] / 255.0f;
@@ -101,7 +101,7 @@ namespace esphome
       float red = (float)payload[1] / 255.0f;
       float green = (float)payload[2] / 255.0f;
       float blue = (float)payload[3] / 255.0f;
-      ESP_LOGV(TAG, "Colors: r[%f], g[%f], b[%f]", red, green, blue);
+      ESP_LOGD(TAG, "Colors: r[%f], g[%f], b[%f]", red, green, blue);
 
       float brightness = (float)payload[4] / 255.0f;
 

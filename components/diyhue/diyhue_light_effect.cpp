@@ -48,24 +48,26 @@ namespace esphome
         ESP_LOGD(TAG, "DiyHue stream for '%s->%s' timed out.", this->state_->get_name().c_str(), this->get_name().c_str());
         this->next_packet_will_be_first_ = true;
 
-        auto call = this->state_->turn_on();
+        auto call = this->state_->turn_off();
 
-        call.set_color_mode_if_supported(this->state_->remote_values.get_color_mode());
-        call.set_red_if_supported(this->state_->remote_values.get_red());
-        call.set_green_if_supported(this->state_->remote_values.get_green());
-        call.set_blue_if_supported(this->state_->remote_values.get_blue());
-        call.set_brightness_if_supported(this->state_->remote_values.get_brightness());
-        call.set_color_brightness_if_supported(this->state_->remote_values.get_color_brightness());
+        // auto call = this->state_->turn_on();
 
-        call.set_white_if_supported(this->state_->remote_values.get_white());
-        call.set_cold_white_if_supported(this->state_->remote_values.get_cold_white());
-        call.set_warm_white_if_supported(this->state_->remote_values.get_warm_white());
+        // call.set_color_mode_if_supported(this->state_->remote_values.get_color_mode());
+        // call.set_red_if_supported(this->state_->remote_values.get_red());
+        // call.set_green_if_supported(this->state_->remote_values.get_green());
+        // call.set_blue_if_supported(this->state_->remote_values.get_blue());
+        // call.set_brightness_if_supported(this->state_->remote_values.get_brightness());
+        // call.set_color_brightness_if_supported(this->state_->remote_values.get_color_brightness());
 
-        call.set_publish(false);
-        call.set_save(false);
+        // call.set_white_if_supported(this->state_->remote_values.get_white());
+        // call.set_cold_white_if_supported(this->state_->remote_values.get_cold_white());
+        // call.set_warm_white_if_supported(this->state_->remote_values.get_warm_white());
 
-        // restore backed up gamma value
-        this->state_->set_gamma_correct(this->gamma_backup_);
+        // call.set_publish(false);
+        // call.set_save(false);
+
+        // // restore backed up gamma value
+        // this->state_->set_gamma_correct(this->gamma_backup_);
         call.perform();
       }
     }
@@ -173,8 +175,8 @@ namespace esphome
       call.set_warm_white_if_supported(0.0f);
 
       call.set_transition_length_if_supported(0);
-      call.set_publish(false);
-      call.set_save(false);
+      call.set_publish(true);
+      call.set_save(ture);
 
       call.perform();
 

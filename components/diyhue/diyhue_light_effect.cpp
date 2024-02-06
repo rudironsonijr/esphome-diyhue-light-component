@@ -175,8 +175,8 @@ namespace esphome
       call.set_warm_white_if_supported(0.0f);
 
       call.set_transition_length_if_supported(0);
-      call.set_publish(true);
-      call.set_save(true);
+      call.set_publish(false);
+      call.set_save(false);
 
       call.perform();
 

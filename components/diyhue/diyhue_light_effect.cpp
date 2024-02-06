@@ -176,7 +176,7 @@ namespace esphome
 
       call.set_transition_length_if_supported(0);
       call.set_publish(true);
-      call.set_save(ture);
+      call.set_save(true);
 
       call.perform();
 

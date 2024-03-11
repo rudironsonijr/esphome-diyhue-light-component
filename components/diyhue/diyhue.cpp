@@ -109,7 +109,7 @@ namespace esphome
             //     return false;
             // }
 
-            ESP_LOGD(TAG, "DiyHue packet received (size=%d): - %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x [%02x %02x %02x]", size, payload[0], payload[1], payload[2], payload[3], payload[4], payload[5], payload[6], payload[7], payload[8], payload[9], payload[10], payload[11], payload[12]);
+            ESP_LOGV(TAG, "DiyHue packet received (size=%d): - %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x [%02x %02x %02x]", size, payload[0], payload[1], payload[2], payload[3], payload[4], payload[5], payload[6], payload[7], payload[8], payload[9], payload[10], payload[11], payload[12]);
 
             // first 10 bytes are the header, so consider them used from the get-go
             // if timecode field is used, takes up an additional 4 bytes of header.
@@ -131,7 +131,7 @@ namespace esphome
 
                 if (new_used == 0)
                 {
-                    ESP_LOGD(TAG, "new_used == 0");
+                    ESP_LOGV(TAG, "new_used == 0");
                     return false;
                 }
                 else

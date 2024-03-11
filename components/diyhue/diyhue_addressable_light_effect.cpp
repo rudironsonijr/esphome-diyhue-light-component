@@ -49,7 +49,7 @@ namespace esphome
       // from Home Assistant, but it is needed to restore value on timeout.
       if (this->timeout_check())
       {
-        ESP_LOGD(TAG, "DiyHue stream for '%s->%s' timed out.", this->state_->get_name().c_str(), this->get_name().c_str());
+        ESP_LOGV(TAG, "DiyHue stream for '%s->%s' timed out.", this->state_->get_name().c_str(), this->get_name().c_str());
         this->next_packet_will_be_first_ = true;
 
         auto call = this->state_->turn_on();

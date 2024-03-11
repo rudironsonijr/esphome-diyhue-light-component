@@ -94,7 +94,7 @@ namespace esphome
       this->next_packet_will_be_first_ = false;
       this->last_diyhue_time_ms_ = millis();
 
-      ESP_LOGD(TAG, "Applying DiyHue data for '%s->%s': (%02x,%02x,%02x) size = %d, used = %d", this->state_->get_name().c_str(), this->get_name().c_str(), payload[used], payload[used + 1], payload[used + 2], size, used);
+      ESP_LOGV(TAG, "Applying DiyHue data for '%s->%s': (%02x,%02x,%02x) size = %d, used = %d", this->state_->get_name().c_str(), this->get_name().c_str(), payload[used], payload[used + 1], payload[used + 2], size, used);
 
       // float red = (float)payload[used] / 255.0f;
       // float green = (float)payload[used + 1] / 255.0f;
@@ -103,7 +103,7 @@ namespace esphome
       float red = (float)payload[1] / 255.0f;
       float green = (float)payload[2] / 255.0f;
       float blue = (float)payload[3] / 255.0f;
-      ESP_LOGD(TAG, "Colors: r[%f], g[%f], b[%f]", red, green, blue);
+      ESP_LOGV(TAG, "Colors: r[%f], g[%f], b[%f]", red, green, blue);
 
       float brightness = (float)payload[4] / 255.0f;
 
